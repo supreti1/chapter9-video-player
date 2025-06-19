@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>🎬 Project 1 - Video Playlist</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Video Playlist</title>
+  <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>🎬 Project 1</h1>
+    <h1>🎥 Project 1: Nature Playlist</h1>
   </header>
 
   <main>
-    <section id="video-container">
-      <video id="vidPlayer" autoplay muted controls>
-        <source src="videos/Nature-8399.mp4" type="video/mp4" />
+    <div class="video-wrapper">
+      <video id="vidPlayer" controls autoplay muted>
+        <source src="videos/Nature.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-    </section>
 
-    <section id="videoListSection">
-      <ul id="videoList">
-        <li data-video="Nature-8399">🌄 Nature</li>
-        <li data-video="River-655">🌊 River</li>
-        <li data-video="Waterfall-941">💧 Waterfall</li>
-        <li data-video="Wave-2737">🌬️ Wave</li>
-      </ul>
-    </section>
+      <div class="video-controls">
+        <button id="prevBtn">⏮️ Previous</button>
+        <button id="nextBtn">⏭️ Next</button>
+      </div>
+    </div>
+
+    <div class="thumbnails">
+      <img src="thumbnails/nature.jpg" alt="Nature" data-video="Nature.mp4" />
+      <img src="thumbnails/river.jpg" alt="River" data-video="River.mp4" />
+      <img src="thumbnails/waterfall.jpg" alt="Waterfall" data-video="Waterfall.mp4" />
+      <img src="thumbnails/wave.jpg" alt="Wave" data-video="Wave.mp4" />
+    </div>
   </main>
 </body>
 </html>

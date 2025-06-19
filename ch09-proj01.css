@@ -1,55 +1,63 @@
-/* General Layout */
+/* General Reset */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   font-family: 'Roboto Condensed', sans-serif;
-  background: #f5f5f5;
 }
 
+/* Make layout full height */
 body {
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 2em;
+}
+
+/* Main takes full space below header */
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   justify-content: space-between;
+  padding: 10px;
 }
 
-/* Video Player Styling */
+/* Video fills 80% of screen height */
 #vidPlayer {
   width: 100%;
   height: 80vh;
   object-fit: cover;
-  border-radius: 10px;
-  background: black;
+  border-radius: 8px;
+  background-color: black;
 }
 
-/* Controls */
+/* Controls under the video */
 #controls {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: 10px;
-  background: #eee;
-  padding: 10px;
-  border-radius: 6px;
   gap: 10px;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 6px;
 }
 
 #controls button {
   background: #fcbf49;
   border: none;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -72,37 +80,32 @@ input[type=range] {
   width: 150px;
 }
 
-/* Sidebar Buttons */
+/* Bottom bar for video selector */
 aside {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
   margin-top: 20px;
-  flex-wrap: wrap;
 }
 
-aside ul {
+#videoList {
   display: flex;
-  gap: 10px;
-  padding: 0;
-  list-style: none;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
 }
 
-aside li {
+#videoList li {
   background-color: #fcbf49;
   color: #003049;
-  padding: 12px 20px;
-  border-radius: 6px;
+  padding: 12px 24px;
+  border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: background 0.3s;
 }
 
-aside li:hover,
-aside li.active {
+#videoList li:hover,
+#videoList li.active {
   background-color: #f77f00;
   color: white;
 }
-

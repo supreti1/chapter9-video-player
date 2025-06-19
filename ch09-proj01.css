@@ -1,107 +1,100 @@
-/* General Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
-/* Make layout full height */
 body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  height: 100vh;
 }
 
-h1 {
+header {
   text-align: center;
-  padding: 10px;
-  font-size: 2em;
+  padding: 20px;
+  background-color: #003049;
+  color: white;
 }
 
-/* Main takes full space below header */
 main {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
+  flex: 1;
 }
 
-/* Video fills 80% of screen height */
-#vidPlayer {
+#video-section {
+  flex: 1;
+}
+
+video {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
+  border-radius: 10px;
   object-fit: cover;
-  border-radius: 8px;
-  background-color: black;
 }
 
-/* Controls under the video */
 #controls {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   margin-top: 10px;
   gap: 10px;
-  padding: 10px;
-  background-color: #eee;
-  border-radius: 6px;
+  flex-wrap: wrap;
 }
 
 #controls button {
   background: #fcbf49;
   border: none;
-  padding: 10px;
-  font-size: 18px;
+  padding: 10px 16px;
+  font-size: 16px;
   cursor: pointer;
+  border-radius: 6px;
 }
 
 #progress {
   flex: 1;
-  height: 10px;
+  height: 8px;
   background: #ccc;
   border-radius: 5px;
   overflow: hidden;
+  margin-right: 10px;
 }
 
 #progressFilled {
-  width: 0%;
   height: 100%;
   background: #f77f00;
+  width: 0%;
 }
 
-/* Volume */
-input[type=range] {
-  width: 150px;
+#volume {
+  width: 120px;
 }
 
-/* Bottom bar for video selector */
 aside {
   margin-top: 20px;
+  text-align: center;
 }
 
 #videoList {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  list-style: none;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 0;
+  list-style: none;
 }
 
 #videoList li {
   background-color: #fcbf49;
-  color: #003049;
-  padding: 12px 24px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.2s;
 }
 
 #videoList li:hover,

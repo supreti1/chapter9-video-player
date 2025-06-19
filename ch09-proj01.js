@@ -55,6 +55,7 @@ video.addEventListener("timeupdate", () => {
   progressFilled.style.width = percent + '%';
 });
 
+// ⏭ Auto-play next video when current ends
 video.addEventListener("ended", () => {
   currentIndex = (currentIndex + 1) % files.length;
   loadVideo(currentIndex);
@@ -66,3 +67,4 @@ document.querySelectorAll("#videoList li").forEach((item, index) => {
 
 // Initial load
 loadVideo(currentIndex);
+

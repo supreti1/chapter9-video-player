@@ -11,7 +11,13 @@ const progress = document.getElementById('progress');
 const progressFilled = document.getElementById('progressFilled');
 
 // Load initial video
-video.src = `videos/${files[currentIndex]}.mp4`;
+function loadVideo(index) {
+  video.src = `videos/${files[index]}.mp4`;
+  video.load();
+  video.play();
+  playButton.textContent = symbolPause;
+}
+loadVideo(currentIndex);
 
 // Play/Pause toggle
 playButton.addEventListener('click', () => {
@@ -24,7 +30,7 @@ playButton.addEventListener('click', () => {
   }
 });
 
-// Stop
+// Stop video
 stopButton.addEventListener('click', () => {
   video.pause();
   video.currentTime = 0;
@@ -49,20 +55,16 @@ video.addEventListener("timeupdate", () => {
   progressFilled.style.width = `${percent}%`;
 });
 
-// Play next video when current one ends
-video.addEventListener('ended', () => {
+// When video ends, auto-play next
+video.addEventListener("ended", () => {
   currentIndex = (currentIndex + 1) % files.length;
-  video.src = `videos/${files[currentIndex]}.mp4`;
-  video.play();
-  playButton.textContent = symbolPause;
+  loadVideo(currentIndex);
 });
 
-// Sidebar: Play selected video
+// Sidebar video selector
 document.querySelectorAll("#videoList li").forEach((item, index) => {
   item.addEventListener("click", () => {
     currentIndex = index;
-    video.src = `videos/${files[currentIndex]}.mp4`;
-    video.play();
-    playButton.textContent = symbolPause;
+    loadVideo(currentIndex);
   });
 });

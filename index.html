@@ -1,109 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Project 1: Video Playlist</title>
-  <link rel="stylesheet" href="ch09-proj01.css" />
-  <script src="ch09-proj01.js" defer></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      text-align: center;
-    }
+   <meta charset="utf-8"/>  
+   <title>Lab 9</title>   
 
-    header {
-      background-color: #fff;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #000;
-    }
-
-    .video-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
-
-    video {
-      width: 80%;
-      max-width: 960px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .playlist {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .playlist button {
-      width: 90%;
-      max-width: 900px;
-      padding: 15px;
-      margin: 5px 0;
-      font-size: 18px;
-      font-weight: bold;
-      background-color: #d8c276;
-      color: #000;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .playlist button:hover {
-      background-color: #c4ad55;
-    }
-
-    .video-controls {
-      margin: 10px auto;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .video-controls button {
-      padding: 10px 16px;
-      font-size: 16px;
-      background-color: #0077cc;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .video-controls button:hover {
-      background-color: #005fa3;
-    }
-  </style>
+   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">  
+   <link rel="stylesheet" href="ch09-proj01.css">
+   <script src="ch09-proj01.js" defer></script> 
 </head>
 <body>
-  <header>📽️ Project 1</header>
-
-  <div class="video-container">
-    <video id="videoPlayer" controls autoplay muted>
-      <source src="videos/Nature.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div class="video-controls">
-    <button onclick="prevVideo()">⏮️ Previous</button>
-    <button onclick="nextVideo()">⏭️ Next</button>
-  </div>
-
-  <div class="playlist">
-    <button onclick="playVideo(0)">🏞️ Nature <span>▶</span></button>
-    <button onclick="playVideo(1)">🌊 River <span>▶</span></button>
-    <button onclick="playVideo(2)">💧 Waterfall <span>▶</span></button>
-    <button onclick="playVideo(3)">🌊 Wave <span>▶</span></button>
-  </div>
+<h1>Project 1</h1>
+<main>
+   <aside>
+     <ul id="videoList">
+       <li data-video="Nature-8399">🌄 Nature</li>
+       <li data-video="River-655">🌊 River</li>
+       <li data-video="Waterfall-941">💧 Waterfall</li>
+       <li data-video="Wave-2737">🌬️ Wave</li>
+     </ul>
+   </aside>
+   <section>
+      <video id="vidPlayer">
+         <source src="videos/Nature-8399.mp4" />
+      </video>
+      <div id="controls">
+         <div id="progress">
+            <div id="progressFilled"></div>
+         </div>
+         <button data-skip="-5">⯇⯇</button>
+         <button id="play" title="Toggle Play">⯈</button>        
+         <button data-skip="5">⯈⯈</button>
+         <button id="stop">◼</button>
+         🕨
+         <input type="range" id="volume" min="0" max="1" step="0.05" value="1"> 
+         🕪
+      </div>
+   </section>
+</main>
 </body>
 </html>

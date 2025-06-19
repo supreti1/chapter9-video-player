@@ -1,77 +1,71 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  text-align: center;
 }
 
 header {
-  width: 100%;
-  text-align: center;
-  background-color: #003049;
+  background: #002244;
   color: white;
   padding: 20px;
 }
 
-main {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-}
-
-#video-container {
+.video-wrapper {
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
 }
 
 #vidPlayer {
-  width: 90%;
-  height: 600px;
-  max-width: 1000px;
+  width: 80%;
+  max-width: 960px;
+  height: auto;
   border-radius: 12px;
-  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   background: black;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-#videoListSection {
+.video-controls {
+  margin-top: 15px;
+}
+
+.video-controls button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background: #0077cc;
+  color: white;
+}
+
+.video-controls button:hover {
+  background: #005fa3;
+}
+
+.thumbnails {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-#videoList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0;
-  width: 90%;
-  max-width: 800px;
-}
-
-#videoList li {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 25px;
-  background: #e6c171;
+.thumbnails img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 18px;
   cursor: pointer;
-  transition: 0.2s;
+  border: 3px solid transparent;
+  transition: 0.3s;
 }
 
-#videoList li:hover,
-#videoList li.active {
-  background: #f77f00;
-  color: white;
+.thumbnails img:hover,
+.thumbnails img.active {
+  border-color: #0077cc;
+  transform: scale(1.05);
 }

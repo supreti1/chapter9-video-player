@@ -1,41 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta charset="utf-8"/>  
-   <title>Lab 9</title>   
-
-   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">  
-   <link rel="stylesheet" href="ch09-proj01.css">
-   <script src="ch09-proj01.js" defer></script> 
+  <meta charset="UTF-8">
+  <title>Lab 9</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="ch09-proj01.css">
+  <script src="ch09-proj01.js" defer></script>
+  <style>
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      padding: 1rem;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    video {
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    #controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    #progress {
+      width: 200px;
+      background-color: #ccc;
+      height: 5px;
+      position: relative;
+      border-radius: 2.5px;
+    }
+    #progressFilled {
+      background: #f77f00;
+      width: 0%;
+      height: 100%;
+      border-radius: 2.5px;
+    }
+    #videoList {
+      display: flex;
+      gap: 1rem;
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #videoList li {
+      background-color: #fcbf49;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    #videoList li:hover {
+      background-color: #f77f00;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-<h1>Project 1</h1>
-<main>
-   <aside>
-     <ul id="videoList">
-       <li data-video="Nature-8399">🌄 Nature</li>
-       <li data-video="River-655">🌊 River</li>
-       <li data-video="Waterfall-941">💧 Waterfall</li>
-       <li data-video="Wave-2737">🌬️ Wave</li>
-     </ul>
-   </aside>
-   <section>
-      <video id="vidPlayer">
-         <source src="videos/Nature-8399.mp4" />
-      </video>
-      <div id="controls">
-         <div id="progress">
-            <div id="progressFilled"></div>
-         </div>
-         <button data-skip="-5">⯇⯇</button>
-         <button id="play" title="Toggle Play">⯈</button>        
-         <button data-skip="5">⯈⯈</button>
-         <button id="stop">◼</button>
-         🕨
-         <input type="range" id="volume" min="0" max="1" step="0.05" value="1"> 
-         🕪
+  <h1>Project 1</h1>
+  <main>
+    <video id="vidPlayer" controls>
+      <source src="videos/Nature-8399.mp4" />
+    </video>
+
+    <div id="controls">
+      <div id="progress">
+        <div id="progressFilled"></div>
       </div>
-   </section>
-</main>
+      <button data-skip="-5">⯇⯇</button>
+      <button id="play">⯈</button>
+      <button data-skip="5">⯈⯈</button>
+      <button id="stop">◼</button>
+      🕨 <input type="range" id="volume" min="0" max="1" step="0.05" value="1"> 🕪
+    </div>
+
+    <ul id="videoList">
+      <li data-video="Nature-8399">🌄 Nature</li>
+      <li data-video="River-655">🌊 River</li>
+      <li data-video="Waterfall-941">💧 Waterfall</li>
+      <li data-video="Wave-2737">🌬️ Wave</li>
+    </ul>
+  </main>
 </body>
 </html>

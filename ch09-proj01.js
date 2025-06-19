@@ -10,16 +10,24 @@ const volumeSlider = document.getElementById('volume');
 const progress = document.getElementById('progress');
 const progressFilled = document.getElementById('progressFilled');
 
-// Load initial video
+// Load and play the selected video
 function loadVideo(index) {
   video.src = `videos/${files[index]}.mp4`;
   video.load();
   video.play();
   playButton.textContent = symbolPause;
+  currentIndex = index;
+
+  // Highlight the active video in the sidebar
+  document.querySelectorAll("#videoList li").forEach((li, i) => {
+    li.classList.toggle("active", i === currentIndex);
+  });
 }
+
+// Load initial video on page load
 loadVideo(currentIndex);
 
-// Play/Pause toggle
+// Toggle play/pause
 playButton.addEventListener('click', () => {
   if (video.paused) {
     video.play();
@@ -30,17 +38,17 @@ playButton.addEventListener('click', () => {
   }
 });
 
-// Stop video
+// Stop button
 stopButton.addEventListener('click', () => {
   video.pause();
   video.currentTime = 0;
   playButton.textContent = symbolPlay;
 });
 
-// Skip forward/back
-document.querySelectorAll("[data-skip]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    video.currentTime += parseFloat(btn.dataset.skip);
+// Skip buttons
+document.querySelectorAll("[data-skip]").forEach(button => {
+  button.addEventListener("click", () => {
+    video.currentTime += parseFloat(button.dataset.skip);
   });
 });
 
@@ -49,22 +57,21 @@ volumeSlider.addEventListener("input", () => {
   video.volume = volumeSlider.value;
 });
 
-// Update progress bar
+// Progress bar update
 video.addEventListener("timeupdate", () => {
   const percent = (video.currentTime / video.duration) * 100;
   progressFilled.style.width = `${percent}%`;
 });
 
-// When video ends, auto-play next
+// Auto-play next video when current ends
 video.addEventListener("ended", () => {
   currentIndex = (currentIndex + 1) % files.length;
   loadVideo(currentIndex);
 });
 
-// Sidebar video selector
+// Sidebar video selector click
 document.querySelectorAll("#videoList li").forEach((item, index) => {
   item.addEventListener("click", () => {
-    currentIndex = index;
-    loadVideo(currentIndex);
+    loadVideo(index);
   });
 });

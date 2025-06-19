@@ -1,30 +1,45 @@
-const files = ['Nature-8399', 'River-655', 'Waterfall-941', 'Wave-2737'];
+const videoPlayer = document.getElementById('vidPlayer');
+const thumbnails = document.querySelectorAll('.thumbnails img');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+
+const videoList = ['Nature.mp4', 'River.mp4', 'Waterfall.mp4', 'Wave.mp4'];
 let currentIndex = 0;
 
-const video = document.getElementById('vidPlayer');
-const listItems = document.querySelectorAll("#videoList li");
-
 function loadVideo(index) {
-  video.src = `videos/${files[index]}.mp4`;
-  video.play();
+  const filename = videoList[index];
+  videoPlayer.src = `videos/${filename}`;
+  videoPlayer.play();
   currentIndex = index;
-  updateActive();
+  updateThumbnailHighlight();
 }
 
-function updateActive() {
-  listItems.forEach((item, i) => {
-    item.classList.toggle("active", i === currentIndex);
+function updateThumbnailHighlight() {
+  thumbnails.forEach((thumb, i) => {
+    thumb.classList.toggle('active', i === currentIndex);
   });
 }
 
-video.addEventListener("ended", () => {
-  currentIndex = (currentIndex + 1) % files.length;
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % videoList.length;
   loadVideo(currentIndex);
 });
 
-listItems.forEach((item, index) => {
-  item.addEventListener("click", () => loadVideo(index));
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + videoList.length) % videoList.length;
+  loadVideo(currentIndex);
 });
 
-// Initial load
-loadVideo(currentIndex);
+thumbnails.forEach((thumb, index) => {
+  thumb.addEventListener('click', () => {
+    loadVideo(index);
+  });
+});
+
+videoPlayer.addEventListener('ended', () => {
+  currentIndex = (currentIndex + 1) % videoList.length;
+  loadVideo(currentIndex);
+});
+
+// Initial highlight
+updateThumbnailHighlight();
